@@ -1,0 +1,46 @@
+.preguntas-container {
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.5s ease, background-color 0.5s ease;
+  }
+  
+  .preguntas-container h1 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    outline: none;
+  }
+  
+  button {
+    margin-left: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Animaciones */
+  .correcto {
+    background-color: #c8f7c5;
+    transform: scale(1.05);
+  }
+  
+  .incorrecto {
+    background-color: #f7c5c5;
+    transform: scale(0.95);
+  }
+  

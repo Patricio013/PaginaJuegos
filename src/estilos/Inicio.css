@@ -1,0 +1,14 @@
+.container {
+    color: blueviolet;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    background-color: rgb(253, 238, 218, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container h1{
+    margin: 0%;
+}

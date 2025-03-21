@@ -1,0 +1,12 @@
+.contenedor img{
+    width: 20%;
+    height: auto;
+}
+
+.contenedor {
+    color: green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

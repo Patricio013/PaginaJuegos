@@ -1,0 +1,24 @@
+.rompecabezas {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    margin: 0 auto;
+    max-width: 320px;
+  }
+  
+  .pieza {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #ccc;
+    cursor: grab;
+    transition: transform 0.2s ease;
+  }
+  
+  .pieza:active {
+    cursor: grabbing;
+  }
+  
+  .pieza:hover {
+    transform: scale(1.05);
+  }

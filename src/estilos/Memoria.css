@@ -1,0 +1,23 @@
+.memoria {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    justify-content: center;
+  }
+  
+  .carta {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+    background-color: #f9a8d4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .volteada {
+    background-color: #fbcfe8;
+  }
