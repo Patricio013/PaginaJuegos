@@ -53,7 +53,7 @@ function Memoria() {
   useEffect(() => {
     if (cartasAdivinadas.length === 8) {
       setTimeout(() => {
-        alert("🎉 ¡Bien hecho amor! Ahora que ya entrenamos la memoria, nos toca aventurarnos en sitios desconocidos 🎉");
+        alert("🎉 ¡Bien hecho jugador! Ahora que ya entrenamos la memoria, nos toca aventurarnos en sitios desconocidos 🎉");
         navigate("/laberinto");
       }, 800);
     }
