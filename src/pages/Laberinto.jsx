@@ -4,7 +4,7 @@ import "../estilos/Laberinto.css";
 import AnimatedPage from "../componentes/AnimatedPage";
 import AudioPlayer from "../componentes/AudioPlayer";
 import laberintoMusico from "../assets/laberinto.mp3";
-import victoriaVideo from "../assets/gatoBesando.mp4";
+import victoriaVideo from "../assets/Felicidades.mp4";
 
 function Laberinto() {
     const navigate = useNavigate();

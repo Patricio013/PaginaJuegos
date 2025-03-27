@@ -11,15 +11,15 @@ function Preguntas() {
   const navigate = useNavigate();
 
   const preguntas = [
-    { pregunta: "❓ ¿En qué año nos conocimos?", respuesta: "2022" },
-    { pregunta: "💖 ¿Cuál es nuestro color favorito?", respuesta: "verde" },
-    { pregunta: "👪 ¿Cuál fue nuestro primer hijo virtual?", respuesta: "kiwii" },
-    { pregunta: "💭 ¿Hace cuantos años estamos saliendo?", respuesta: "2" },
-    { pregunta: "🧉 ¿Cuál es la comida que más me gusta?", respuesta: "tostados" },
-    { pregunta: "🐕 ¿Como se llamaba mi primera mascota?", respuesta: "blanqui" },
-    { pregunta: "💍 ¿Te casarias conmigo?", respuesta: "acepto" },
-    { pregunta: "🥰 ¿Me amas?", respuesta: "te amo" },
-    { pregunta: "💑 ¿Por siempre?", respuesta: "para siempre" }
+    { pregunta: "¿En qué país se encuentra la Gran Muralla China?", respuesta: "china" },
+    { pregunta: "¿Cuál es color que se forma cuando se mezcla azul y amarillo?", respuesta: "verde" },
+    { pregunta: "¿Cuál es el país más grande del mundo en superficie?", respuesta: "rusia" },
+    { pregunta: "¿Como esta compuesto el agua?", respuesta: "H2O" },
+    { pregunta: "¿Cuál es el metal más abundante en la corteza terrestre?", respuesta: "aluminio" },
+    { pregunta: "¿Cuál es el mejor amigo del hombre?", respuesta: "perro" },
+    { pregunta: "¿Cuántos continentes hay en la Tierra?", respuesta: "7" },
+    { pregunta: "¿Cuántos huesos tiene el cuerpo humano adulto?", respuesta: "206" },
+    { pregunta: "¿Quien hizo la Mona Lisa?", respuesta: "leonardo da vinci" }
   ];
 
   const [indice, setIndice] = useState(0);

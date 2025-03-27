@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import AudioPlayer from "../componentes/AudioPlayer";
 import rompecabezasMusic from "../assets/rompecabezas.mp3";
 import "../estilos/Rompecabezas.css";
-import teamo from "../assets/teamo.png";
+import puzzle from "../assets/rompecabezas.png";
 import AnimatedPage from "../componentes/AnimatedPage"
 
 const GRID_SIZE = 5; // Para el yo del futuro, si quiero cambiar la cantidad de casillar, nomas cambiar este numero
@@ -44,7 +44,7 @@ function Rompecabezas() {
               swapPiezas(fromIndex, index);
             }}
             style={{
-              backgroundImage: `url(${teamo})`,
+              backgroundImage: `url(${puzzle})`,
               backgroundSize: `${GRID_SIZE * 100}px ${GRID_SIZE * 100}px`,
               backgroundPosition: `${-(pos % GRID_SIZE) * 100}px ${-Math.floor(pos / GRID_SIZE) * 100}px`,
             }}
