@@ -18,7 +18,7 @@
   cursor: grab;
   transition: transform 0.2s ease;
   box-sizing: border-box;
-  touch-action: none;
+  touch-action: manipulation;
 }
 
 .pieza-mobile:active {
