@@ -5,7 +5,6 @@
     padding: 8px;
   }
   
-  /* Título encima */
   .titulo-mobile {
     font-size: 1.2rem;
     color: white;
@@ -14,8 +13,8 @@
   }
   
   .laberinto {
-    width: calc(100vw - 16px);  /* 100% del viewport ancho menos 16px de padding */
-    aspect-ratio: 1;            /* altura = anchura */
+    width: calc(100vw - 16px); 
+    aspect-ratio: 1;            
     display: grid;
     grid-template-columns: repeat(20, 1fr);
     grid-template-rows:    repeat(20, 1fr);
@@ -28,13 +27,11 @@
     display: contents;
   }  
   
-  /* Cada celda ocupa toda su fracción */
   .celda {
     width: 100%;
     height: 100%;
   }
   
-  /* Controles táctiles */
   .controles {
     display: flex;
     flex-direction: column;

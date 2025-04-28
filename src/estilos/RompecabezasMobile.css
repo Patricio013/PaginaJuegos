@@ -1,7 +1,7 @@
 .rompecabezas-mobile {
-  width: 90vw;    /* ó el % que prefieras */
-  height: 90vw;   /* lo mismo para que sea cuadrado */
-  max-width: 360px;  /* opcional: no lo dejes gigante en tablets */
+  width: 90vw;
+  height: 90vw; 
+  max-width: 360px; 
   max-height: 360px;
   box-sizing: border-box;
   display: grid;
