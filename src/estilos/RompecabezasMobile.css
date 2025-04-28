@@ -1,0 +1,30 @@
+.rompecabezas-mobile {
+  width: 90vw;    /* ó el % que prefieras */
+  height: 90vw;   /* lo mismo para que sea cuadrado */
+  max-width: 360px;  /* opcional: no lo dejes gigante en tablets */
+  max-height: 360px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 5px;
+  margin: 0 auto;
+}
+
+.pieza-mobile {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ccc;
+  cursor: grab;
+  transition: transform 0.2s ease;
+  box-sizing: border-box;
+  touch-action: none;
+}
+
+.pieza-mobile:active {
+  cursor: grabbing;
+}
+
+.pieza-mobile:hover {
+  transform: scale(1.05);
+}

@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 import AudioPlayer from "../componentes/AudioPlayer";
 import rompecabezasMusic from "../assets/rompecabezas.mp3";
 import "../estilos/Rompecabezas.css";
-import puzzle from "../assets/rompecabezas.png";
-import AnimatedPage from "../componentes/AnimatedPage"
+import RompecabezasPC from "./Refactorizado/RompecabezasPC";
+import RompecabezasMobile from "./Refactorizado/RompecabezasMobile";
+import AnimatedPage from "../componentes/AnimatedPage";
 
 const GRID_SIZE = 5; // Para el yo del futuro, si quiero cambiar la cantidad de casillar, nomas cambiar este numero
 const TOTAL_PIEZAS = GRID_SIZE * GRID_SIZE;
@@ -13,6 +14,14 @@ const piezasCorrectas = [...Array(TOTAL_PIEZAS).keys()];
 function Rompecabezas() {
   const navigate = useNavigate();
   const [piezas, setPiezas] = useState([]);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     setPiezas([...piezasCorrectas].sort(() => Math.random() - 0.5));
@@ -31,26 +40,11 @@ function Rompecabezas() {
   return (
     <AnimatedPage>
       <AudioPlayer src={rompecabezasMusic} />
-      <div className="rompecabezas" style={{ gridTemplateColumns: `repeat(${GRID_SIZE}, 1fr)` }}>
-        {piezas.map((pos, index) => (
-          <div
-            key={index}
-            className="pieza"
-            draggable
-            onDragStart={(e) => e.dataTransfer.setData("text/plain", index)}
-            onDragOver={(e) => e.preventDefault()}
-            onDrop={(e) => {
-              const fromIndex = e.dataTransfer.getData("text/plain");
-              swapPiezas(fromIndex, index);
-            }}
-            style={{
-              backgroundImage: `url(${puzzle})`,
-              backgroundSize: `${GRID_SIZE * 100}px ${GRID_SIZE * 100}px`,
-              backgroundPosition: `${-(pos % GRID_SIZE) * 100}px ${-Math.floor(pos / GRID_SIZE) * 100}px`,
-            }}
-          />
-        ))}
-      </div>
+      {isMobile ? (
+        <RompecabezasMobile piezas={piezas} gridSize={GRID_SIZE} swapPiezas={swapPiezas} />
+      ) : (
+        <RompecabezasPC piezas={piezas} gridSize={GRID_SIZE} swapPiezas={swapPiezas} />
+      )}
     </AnimatedPage>
   );
 }

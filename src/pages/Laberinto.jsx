@@ -5,6 +5,8 @@ import AnimatedPage from "../componentes/AnimatedPage";
 import AudioPlayer from "../componentes/AudioPlayer";
 import laberintoMusico from "../assets/laberinto.mp3";
 import victoriaVideo from "../assets/Felicidades.mp4";
+import LaberintoPC from "./Refactorizado/LaberintoPC";
+import LaberintoMobile from "./Refactorizado/LaberintoMobile";
 
 function Laberinto() {
     const navigate = useNavigate();
@@ -34,34 +36,54 @@ function Laberinto() {
   
     const [pos, setPos] = useState({ x: 0, y: 0 });
     const [ganado, setGanado] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+      const handleResize = () => {
+        setIsMobile(window.innerWidth <= 768);
+      };
+      handleResize();
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
+  
+    const mover = (direccion) => {
+      let { x, y } = pos;
+  
+      if (direccion === "arriba" && y > 0 && laberinto[y - 1][x] !== 1) y--;
+      if (direccion === "abajo"  && y < tamaño - 1 && laberinto[y + 1][x] !== 1) y++;
+      if (direccion === "izquierda" && x > 0 && laberinto[y][x - 1] !== 1) x--;
+      if (direccion === "derecha" && x < tamaño - 1 && laberinto[y][x + 1] !== 1) x++;
+  
+      if (laberinto[y][x] === 3) {
+        alert("⚠️ ¡Caíste en una trampa! Vuelves al inicio.");
+        x = 0;
+        y = 0;
+      }
+
+      if (laberinto[y][x] === 2) {
+        setGanado(true);
+      }
+  
+      setPos({ x, y });
+    };
   
     useEffect(() => {
-      const handleKeyDown = (e) => {
-        if (ganado) return;
+      if (isMobile || ganado) return;
   
-        let { x, y } = pos;
-        
-        if (e.key === "ArrowUp" && y > 0 && laberinto[y - 1][x] !== 1) y--;
-        if (e.key === "ArrowDown" && y < tamaño - 1 && laberinto[y + 1][x] !== 1) y++;
-        if (e.key === "ArrowLeft" && x > 0 && laberinto[y][x - 1] !== 1) x--;
-        if (e.key === "ArrowRight" && x < tamaño - 1 && laberinto[y][x + 1] !== 1) x++;
-  
-        if (laberinto[y][x] === 3) {
-          alert("⚠️ ¡Caíste en una trampa! Vuelves al inicio.");
-          x = 0;
-          y = 0;
+      const onKeyDown = (e) => {
+        switch (e.key) {
+          case "ArrowUp":    mover("arriba");    break;
+          case "ArrowDown":  mover("abajo");     break;
+          case "ArrowLeft":  mover("izquierda"); break;
+          case "ArrowRight": mover("derecha");   break;
         }
-  
-        if (laberinto[y][x] === 2) {
-          setGanado(true);
-        }
-  
-        setPos({ x, y });
       };
   
-      window.addEventListener("keydown", handleKeyDown);
-      return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [pos, laberinto, ganado]);
+      window.addEventListener("keydown", onKeyDown);
+      return () => window.removeEventListener("keydown", onKeyDown);
+    }, [pos, isMobile, ganado]);
+  
   
     return (
       <AnimatedPage>
@@ -73,27 +95,24 @@ function Laberinto() {
             </video>
           </div>
         ) : (
-          <div className="laberinto">
+          <>
             <AudioPlayer src={laberintoMusico} />
-            <p>Encuentra la salida</p>
-            {laberinto.map((fila, y) => (
-              <div key={y} className="fila">
-                {fila.map((celda, x) => {
-                  let distancia = Math.abs(pos.x - x) + Math.abs(pos.y - y);
-                  let visible = distancia <= rangoVision;
-  
-                  let clase = "celda";
-                  if (!visible) clase += " oculto";
-                  if (celda === 1) clase += " pared";
-                  if (celda === 2) clase += " meta";
-                  if (celda === 3) clase += " trampa";
-                  if (pos.x === x && pos.y === y) clase += " jugador";
-  
-                  return <div key={x} className={clase}></div>;
-                })}
-              </div>
-            ))}
-          </div>
+            {isMobile ? (
+              <LaberintoMobile
+                laberinto={laberinto}
+                pos={pos}
+                rangoVision={rangoVision}
+                mover={mover}
+              />
+            ) : (
+              <LaberintoPC
+                laberinto={laberinto}
+                pos={pos}
+                rangoVision={rangoVision}
+                mover={mover}
+              />
+            )}
+          </>
         )}
       </AnimatedPage>
     );

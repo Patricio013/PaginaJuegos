@@ -1,0 +1,42 @@
+.laberinto-pc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .fila-pc {
+    display: flex;
+  }
+  
+  .celda-pc {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  
+  .pared-pc {
+    background: #5f3b04;
+  }
+  
+  .meta-pc {
+    background: gold;
+  }
+  
+  .trampa-pc {
+    background: crimson;
+  }
+  
+  .jugador-pc {
+    background: red;
+    border-radius: 50%;
+  }
+  
+  .oculto-pc {
+    background: black;
+    border: none;
+  }

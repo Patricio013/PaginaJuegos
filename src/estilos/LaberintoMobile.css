@@ -1,0 +1,49 @@
+.laberinto-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+  }
+  
+  /* Título encima */
+  .titulo-mobile {
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+  
+  .laberinto {
+    width: calc(100vw - 16px);  /* 100% del viewport ancho menos 16px de padding */
+    aspect-ratio: 1;            /* altura = anchura */
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows:    repeat(20, 1fr);
+    gap: 1px;
+    background: #111;
+    margin-bottom: 12px;
+  }
+
+  .fila {
+    display: contents;
+  }  
+  
+  /* Cada celda ocupa toda su fracción */
+  .celda {
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Controles táctiles */
+  .controles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .controles button {
+    margin: 4px;
+    font-size: 22px;
+    padding: 8px 16px;
+    border-radius: 8px;
+  }
